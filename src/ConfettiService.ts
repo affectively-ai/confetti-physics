@@ -20,7 +20,7 @@ import {
 let confetti: ConfettiFn | null = null;
 if (typeof window !== 'undefined') {
   import('canvas-confetti').then((mod) => {
-    confetti = mod.default ?? mod;
+    confetti = (mod.default ?? mod) as unknown as ConfettiFn;
   });
 }
 

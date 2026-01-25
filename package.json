@@ -1,0 +1,77 @@
+{
+  "name": "@affectively/confetti-physics",
+  "version": "1.0.0",
+  "description": "Physics-based confetti celebrations with fluid dynamics, haptic feedback, and procedural audio. Built with hexgrid-3d math.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react.mjs",
+      "require": "./dist/react.js",
+      "types": "./dist/react.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts src/react.ts --format cjs,esm --dts --external react",
+    "prepublishOnly": "npm run build",
+    "test": "bun test"
+  },
+  "keywords": [
+    "confetti",
+    "celebration",
+    "physics",
+    "particles",
+    "fluid-dynamics",
+    "haptic",
+    "sound",
+    "web-audio",
+    "vibration",
+    "canvas",
+    "animation",
+    "react",
+    "hooks"
+  ],
+  "author": "AFFECTIVELY <opensource@affectively.ai>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/affectively-ai/confetti-physics.git"
+  },
+  "bugs": {
+    "url": "https://github.com/affectively-ai/confetti-physics/issues"
+  },
+  "homepage": "https://github.com/affectively-ai/confetti-physics#readme",
+  "dependencies": {
+    "@buley/hexgrid-3d": "^1.0.0",
+    "canvas-confetti": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "react": "^19.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.9.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

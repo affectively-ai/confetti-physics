@@ -24,7 +24,11 @@ import {
   type CelebrationType,
   type CelebrationConfig,
 } from './CelebrationService';
-import { HapticService, type HapticPattern, type HapticIntensity } from './HapticService';
+import {
+  HapticService,
+  type HapticPattern,
+  type HapticIntensity,
+} from './HapticService';
 import { SoundService, type SoundType } from './SoundService';
 import { ConfettiService, type ConfettiType } from './ConfettiService';
 import {
@@ -394,9 +398,7 @@ export function useConfetti() {
  */
 export function usePhysicsConfetti() {
   const engine = getPhysicsConfettiEngine();
-  const [enabled, setEnabled] = useState(
-    () => engine?.isEnabled() ?? false
-  );
+  const [enabled, setEnabled] = useState(() => engine?.isEnabled() ?? false);
 
   const celebrate = useCallback((config: PhysicsCelebrationConfig) => {
     const e = getPhysicsConfettiEngine();

@@ -277,7 +277,7 @@ class SoundServiceClass {
     frequency: number,
     duration: number,
     config: SoundConfig,
-    startTime: number
+    startTime: number,
   ): void {
     const ctx = this.getAudioContext();
     if (!ctx) return;
@@ -304,19 +304,19 @@ class SoundServiceClass {
     // Attack
     gainNode.gain.linearRampToValueAtTime(
       effectiveVolume,
-      startTime + envelope.attack
+      startTime + envelope.attack,
     );
 
     // Decay to sustain
     gainNode.gain.linearRampToValueAtTime(
       effectiveVolume * envelope.sustain,
-      startTime + envelope.attack + envelope.decay
+      startTime + envelope.attack + envelope.decay,
     );
 
     // Hold at sustain level
     gainNode.gain.setValueAtTime(
       effectiveVolume * envelope.sustain,
-      startTime + durationSec - envelope.release
+      startTime + durationSec - envelope.release,
     );
 
     // Release to 0
@@ -430,7 +430,7 @@ class SoundServiceClass {
   playCustom(
     frequencies: number[],
     durations: number[],
-    options?: Partial<SoundConfig>
+    options?: Partial<SoundConfig>,
   ): void {
     if (!this.isEnabled()) return;
 

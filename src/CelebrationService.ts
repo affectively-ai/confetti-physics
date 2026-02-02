@@ -27,7 +27,8 @@ export type CelebrationType =
   | 'dailyCheckIn' // Daily check-in complete
   | 'weeklyReview' // Weekly review complete
   | 'error' // Error feedback
-  | 'warning'; // Warning feedback
+  | 'warning' // Warning feedback
+  | 'radiance'; // Golden Ticket / Hall of Fame induction (ultimate celebration)
 
 // Celebration configurations
 export interface CelebrationConfig {
@@ -164,6 +165,15 @@ const CELEBRATION_CONFIGS: Record<CelebrationType, CelebrationConfig> = {
     haptic: 'warning',
     hapticIntensity: 'light',
   },
+
+  radiance: {
+    // Multi-phase celebration - triggers supernova initially
+    // Full radiance sequence handled by celebrateRadiance() method
+    confetti: 'premium', // Fallback if single-phase
+    sound: 'celebration',
+    haptic: 'celebration',
+    hapticIntensity: 'strong',
+  },
 };
 
 // User preference keys for localStorage
@@ -192,7 +202,7 @@ class CelebrationServiceClass {
       const soundEnabled = localStorage.getItem(STORAGE_KEYS.soundEnabled);
       const hapticEnabled = localStorage.getItem(STORAGE_KEYS.hapticEnabled);
       const confettiEnabled = localStorage.getItem(
-        STORAGE_KEYS.confettiEnabled
+        STORAGE_KEYS.confettiEnabled,
       );
       const volume = localStorage.getItem(STORAGE_KEYS.volume);
 
@@ -222,19 +232,19 @@ class CelebrationServiceClass {
     try {
       localStorage.setItem(
         STORAGE_KEYS.soundEnabled,
-        SoundService.isEnabled().toString()
+        SoundService.isEnabled().toString(),
       );
       localStorage.setItem(
         STORAGE_KEYS.hapticEnabled,
-        HapticService.isEnabled().toString()
+        HapticService.isEnabled().toString(),
       );
       localStorage.setItem(
         STORAGE_KEYS.confettiEnabled,
-        ConfettiService.isEnabled().toString()
+        ConfettiService.isEnabled().toString(),
       );
       localStorage.setItem(
         STORAGE_KEYS.volume,
-        SoundService.getVolume().toString()
+        SoundService.getVolume().toString(),
       );
     } catch {
       // localStorage not available
@@ -422,6 +432,65 @@ class CelebrationServiceClass {
   /** Warning feedback */
   warning(): void {
     this.celebrate('warning');
+  }
+
+  /**
+   * Ultimate Radiance celebration - multi-phase sequence for Golden Ticket acceptance
+   * Phase 1 (0-2s): Supernova explosion with strong haptic
+   * Phase 2 (2-5s): Aurora flowing ribbons
+   * Phase 3 (5-8s): Constellation pattern forming radiance symbol
+   *
+   * @param onPhaseChange - Optional callback for UI to sync with phases
+   */
+  celebrateRadiance(onPhaseChange?: (phase: number, name: string) => void): void {
+    // Gold/purple triumph colors for radiance
+    const triumphColors = ['#a855f7', '#c084fc', '#d8b4fe', '#fbbf24', '#fcd34d'];
+    const wonderColors = ['#0ea5e9', '#38bdf8', '#7dd3fc', '#bae6fd', '#a855f7'];
+    const constellationColors = ['#fbbf24', '#fcd34d', '#a855f7', '#c084fc'];
+
+    // Phase 1: Immediate Impact (0-2s)
+    onPhaseChange?.(1, 'supernova');
+    HapticService.vibrate('celebration', 'strong');
+    SoundService.play('celebration');
+    ConfettiService.celebratePhysics({
+      type: 'supernova',
+      colors: triumphColors,
+      intensity: 1.0,
+    });
+
+    // Phase 2: Sustained Glory (2-5s)
+    setTimeout(() => {
+      onPhaseChange?.(2, 'aurora');
+      HapticService.vibrate('milestone', 'medium');
+      SoundService.play('milestone');
+      ConfettiService.celebratePhysics({
+        type: 'aurora',
+        colors: wonderColors,
+        intensity: 0.8,
+      });
+    }, 2000);
+
+    // Phase 3: Resolution (5-8s)
+    setTimeout(() => {
+      onPhaseChange?.(3, 'constellation');
+      HapticService.vibrate('success', 'light');
+      SoundService.play('success');
+      ConfettiService.celebratePhysics({
+        type: 'constellation',
+        colors: constellationColors,
+        intensity: 0.6,
+      });
+    }, 5000);
+
+    // Complete
+    setTimeout(() => {
+      onPhaseChange?.(0, 'complete');
+    }, 8000);
+  }
+
+  /** Radiance / Hall of Fame induction celebration */
+  radiance(): void {
+    this.celebrateRadiance();
   }
 }
 

@@ -42,7 +42,7 @@ import {
  */
 export function useCelebration() {
   const [settings, setSettings] = useState(() =>
-    CelebrationService.getSettings()
+    CelebrationService.getSettings(),
   );
 
   // Update settings when they change
@@ -69,7 +69,7 @@ export function useCelebration() {
       CelebrationService.setSoundEnabled(enabled);
       refreshSettings();
     },
-    [refreshSettings]
+    [refreshSettings],
   );
 
   const setHapticEnabled = useCallback(
@@ -77,7 +77,7 @@ export function useCelebration() {
       CelebrationService.setHapticEnabled(enabled);
       refreshSettings();
     },
-    [refreshSettings]
+    [refreshSettings],
   );
 
   const setConfettiEnabled = useCallback(
@@ -85,7 +85,7 @@ export function useCelebration() {
       CelebrationService.setConfettiEnabled(enabled);
       refreshSettings();
     },
-    [refreshSettings]
+    [refreshSettings],
   );
 
   const setVolume = useCallback(
@@ -93,7 +93,7 @@ export function useCelebration() {
       CelebrationService.setVolume(volume);
       refreshSettings();
     },
-    [refreshSettings]
+    [refreshSettings],
   );
 
   // Convenience methods
@@ -148,7 +148,7 @@ export function useHaptic() {
     (pattern: HapticPattern, intensity?: HapticIntensity) => {
       return HapticService.vibrate(pattern, intensity);
     },
-    []
+    [],
   );
 
   const setEnabled = useCallback((value: boolean) => {
@@ -159,43 +159,43 @@ export function useHaptic() {
   // Convenience methods
   const tap = useCallback(
     (intensity?: HapticIntensity) => HapticService.tap(intensity),
-    []
+    [],
   );
   const select = useCallback(
     (intensity?: HapticIntensity) => HapticService.select(intensity),
-    []
+    [],
   );
   const success = useCallback(
     (intensity?: HapticIntensity) => HapticService.success(intensity),
-    []
+    [],
   );
   const celebrate = useCallback(
     (intensity?: HapticIntensity) => HapticService.celebrate(intensity),
-    []
+    [],
   );
   const milestone = useCallback(
     (intensity?: HapticIntensity) => HapticService.milestone(intensity),
-    []
+    [],
   );
   const notify = useCallback(
     (intensity?: HapticIntensity) => HapticService.notify(intensity),
-    []
+    [],
   );
   const error = useCallback(
     (intensity?: HapticIntensity) => HapticService.error(intensity),
-    []
+    [],
   );
   const heartbeat = useCallback(
     (intensity?: HapticIntensity) => HapticService.heartbeat(intensity),
-    []
+    [],
   );
   const breatheIn = useCallback(
     (intensity?: HapticIntensity) => HapticService.breatheIn(intensity),
-    []
+    [],
   );
   const breatheOut = useCallback(
     (intensity?: HapticIntensity) => HapticService.breatheOut(intensity),
-    []
+    [],
   );
 
   return {
@@ -272,10 +272,10 @@ export function useSound() {
  */
 export function useConfetti() {
   const [enabled, setEnabledState] = useState(() =>
-    ConfettiService.isEnabled()
+    ConfettiService.isEnabled(),
   );
   const [physicsEnabled, setPhysicsEnabledState] = useState(() =>
-    ConfettiService.isPhysicsEnabled()
+    ConfettiService.isPhysicsEnabled(),
   );
 
   const celebrate = useCallback((type: ConfettiType) => {
@@ -296,7 +296,7 @@ export function useConfetti() {
     }) => {
       ConfettiService.celebrateEmotion(config);
     },
-    []
+    [],
   );
 
   const setEnabled = useCallback((value: boolean) => {
@@ -313,7 +313,7 @@ export function useConfetti() {
     (element: HTMLElement, type?: ConfettiType) => {
       ConfettiService.fromElement(element, type);
     },
-    []
+    [],
   );
 
   // Classic celebration methods
@@ -337,7 +337,7 @@ export function useConfetti() {
   const aurora = useCallback(() => ConfettiService.aurora(), []);
   const resonance = useCallback(
     (heartRate?: number) => ConfettiService.resonance(heartRate),
-    []
+    [],
   );
   const orbit = useCallback(() => ConfettiService.orbit(), []);
   const cascade = useCallback(() => ConfettiService.cascade(), []);
@@ -420,7 +420,7 @@ export function usePhysicsConfetti() {
         count?: number;
         intensity?: number;
         heartRate?: number;
-      }
+      },
     ) => {
       const e = getPhysicsConfettiEngine();
       if (e) {
@@ -438,7 +438,7 @@ export function usePhysicsConfetti() {
         });
       }
     },
-    []
+    [],
   );
 
   const clear = useCallback(() => {
@@ -460,62 +460,62 @@ export function usePhysicsConfetti() {
   const vortex = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'vortex', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const supernova = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'supernova', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const aurora = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'aurora', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const resonance = useCallback(
     (heartRate: number, config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'resonance', heartRate, ...config }),
-    [celebrate]
+    [celebrate],
   );
   const orbit = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'orbit', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const cascade = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'cascade', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const emergence = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'emergence', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const harmony = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'harmony', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const helix = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'helix', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const bloom = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'bloom', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const constellation = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'constellation', ...config }),
-    [celebrate]
+    [celebrate],
   );
   const nebula = useCallback(
     (config?: Partial<PhysicsCelebrationConfig>) =>
       celebrate({ type: 'nebula', ...config }),
-    [celebrate]
+    [celebrate],
   );
 
   return {
@@ -599,7 +599,7 @@ export function useBreathingFeedback() {
     (inhaleMs: number, holdMs: number, exhaleMs: number) => {
       HapticService.breathingCycle(inhaleMs, holdMs, exhaleMs);
     },
-    []
+    [],
   );
 
   return {

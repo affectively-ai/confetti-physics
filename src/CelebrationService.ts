@@ -442,10 +442,24 @@ class CelebrationServiceClass {
    *
    * @param onPhaseChange - Optional callback for UI to sync with phases
    */
-  celebrateRadiance(onPhaseChange?: (phase: number, name: string) => void): void {
+  celebrateRadiance(
+    onPhaseChange?: (phase: number, name: string) => void,
+  ): void {
     // Gold/purple triumph colors for radiance
-    const triumphColors = ['#a855f7', '#c084fc', '#d8b4fe', '#fbbf24', '#fcd34d'];
-    const wonderColors = ['#0ea5e9', '#38bdf8', '#7dd3fc', '#bae6fd', '#a855f7'];
+    const triumphColors = [
+      '#a855f7',
+      '#c084fc',
+      '#d8b4fe',
+      '#fbbf24',
+      '#fcd34d',
+    ];
+    const wonderColors = [
+      '#0ea5e9',
+      '#38bdf8',
+      '#7dd3fc',
+      '#bae6fd',
+      '#a855f7',
+    ];
     const constellationColors = ['#fbbf24', '#fcd34d', '#a855f7', '#c084fc'];
 
     // Phase 1: Immediate Impact (0-2s)

@@ -1,6 +1,6 @@
 {
   "name": "@affectively/confetti-physics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Physics-based confetti celebrations with fluid dynamics, haptic feedback, and procedural audio. Built with hexgrid-3d math.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

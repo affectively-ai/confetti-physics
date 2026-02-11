@@ -314,9 +314,15 @@ class SoundServiceClass {
     );
 
     // Hold at sustain level
+    // Guard against short notes where release is longer than note duration,
+    // which would produce an invalid negative timestamp for AudioParam.
+    const sustainTime = Math.max(
+      startTime,
+      startTime + durationSec - envelope.release,
+    );
     gainNode.gain.setValueAtTime(
       effectiveVolume * envelope.sustain,
-      startTime + durationSec - envelope.release,
+      sustainTime,
     );
 
     // Release to 0

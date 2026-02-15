@@ -247,7 +247,7 @@ export class PhysicsConfettiEngine {
           count,
           colors,
           intensity,
-          heartRate,
+          heartRate
         );
         break;
       case 'orbit':
@@ -292,7 +292,7 @@ export class PhysicsConfettiEngine {
     y: number,
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     // Central vortex attractor
     this.attractors.push({
@@ -341,7 +341,7 @@ export class PhysicsConfettiEngine {
     y: number,
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     // Create expanding shockwave in fluid
     if (this.fluid) {
@@ -399,7 +399,7 @@ export class PhysicsConfettiEngine {
   private createAurora(
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -415,7 +415,7 @@ export class PhysicsConfettiEngine {
           y,
           2 * intensity,
           Math.sin(i * 0.5) * 0.5,
-          200,
+          200
         );
       }
     }
@@ -452,7 +452,7 @@ export class PhysicsConfettiEngine {
     count: number,
     colors: string[],
     intensity: number,
-    heartRate?: number,
+    heartRate?: number
   ): void {
     // Default to 72 BPM if no heart rate provided
     const bpm = heartRate ?? 72;
@@ -518,7 +518,7 @@ export class PhysicsConfettiEngine {
     y: number,
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     // Create 3 orbital centers in a triangle
     const centers = [
@@ -569,7 +569,7 @@ export class PhysicsConfettiEngine {
   private createCascade(
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     const width = window.innerWidth;
 
@@ -613,7 +613,7 @@ export class PhysicsConfettiEngine {
     y: number,
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     // Create radial flow field emanating from origin
     if (this.flowField) {
@@ -664,7 +664,7 @@ export class PhysicsConfettiEngine {
     y: number,
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     // Create moving attractors that trace Lissajous curves
     // This creates beautiful interference patterns
@@ -717,7 +717,7 @@ export class PhysicsConfettiEngine {
     y: number,
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     const height = window.innerHeight;
     const helixRadius = 80;
@@ -761,7 +761,7 @@ export class PhysicsConfettiEngine {
     y: number,
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     const petals = 8;
     const layers = 4;
@@ -817,7 +817,7 @@ export class PhysicsConfettiEngine {
   private createConstellation(
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -855,7 +855,7 @@ export class PhysicsConfettiEngine {
     y: number,
     count: number,
     colors: string[],
-    intensity: number,
+    intensity: number
   ): void {
     // Add density to fluid for gaseous effect
     if (this.fluid) {
@@ -1129,7 +1129,7 @@ export class PhysicsConfettiEngine {
     cy: number,
     spikes: number,
     outerRadius: number,
-    innerRadius: number,
+    innerRadius: number
   ): void {
     let rot = (Math.PI / 2) * 3;
     const step = Math.PI / spikes;
@@ -1140,12 +1140,12 @@ export class PhysicsConfettiEngine {
     for (let i = 0; i < spikes; i++) {
       ctx.lineTo(
         cx + Math.cos(rot) * outerRadius,
-        cy + Math.sin(rot) * outerRadius,
+        cy + Math.sin(rot) * outerRadius
       );
       rot += step;
       ctx.lineTo(
         cx + Math.cos(rot) * innerRadius,
-        cy + Math.sin(rot) * innerRadius,
+        cy + Math.sin(rot) * innerRadius
       );
       rot += step;
     }
@@ -1160,7 +1160,7 @@ export class PhysicsConfettiEngine {
     ctx: CanvasRenderingContext2D,
     cx: number,
     cy: number,
-    size: number,
+    size: number
   ): void {
     const s = size / 2;
     ctx.beginPath();
@@ -1172,7 +1172,7 @@ export class PhysicsConfettiEngine {
       cx + s,
       cy - s * 0.5,
       cx,
-      cy + s * 0.3,
+      cy + s * 0.3
     );
     ctx.fill();
   }
@@ -1182,7 +1182,7 @@ export class PhysicsConfettiEngine {
     ctx: CanvasRenderingContext2D,
     cx: number,
     cy: number,
-    radius: number,
+    radius: number
   ): void {
     ctx.beginPath();
     for (let i = 0; i < 6; i++) {
@@ -1205,7 +1205,7 @@ export class PhysicsConfettiEngine {
     cx: number,
     cy: number,
     radius: number,
-    angle: number,
+    angle: number
   ): void {
     ctx.beginPath();
     const turns = 2;

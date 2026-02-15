@@ -277,7 +277,7 @@ class SoundServiceClass {
     frequency: number,
     duration: number,
     config: SoundConfig,
-    startTime: number,
+    startTime: number
   ): void {
     const ctx = this.getAudioContext();
     if (!ctx) return;
@@ -304,13 +304,13 @@ class SoundServiceClass {
     // Attack
     gainNode.gain.linearRampToValueAtTime(
       effectiveVolume,
-      startTime + envelope.attack,
+      startTime + envelope.attack
     );
 
     // Decay to sustain
     gainNode.gain.linearRampToValueAtTime(
       effectiveVolume * envelope.sustain,
-      startTime + envelope.attack + envelope.decay,
+      startTime + envelope.attack + envelope.decay
     );
 
     // Hold at sustain level
@@ -318,11 +318,11 @@ class SoundServiceClass {
     // which would produce an invalid negative timestamp for AudioParam.
     const sustainTime = Math.max(
       startTime,
-      startTime + durationSec - envelope.release,
+      startTime + durationSec - envelope.release
     );
     gainNode.gain.setValueAtTime(
       effectiveVolume * envelope.sustain,
-      sustainTime,
+      sustainTime
     );
 
     // Release to 0
@@ -436,7 +436,7 @@ class SoundServiceClass {
   playCustom(
     frequencies: number[],
     durations: number[],
-    options?: Partial<SoundConfig>,
+    options?: Partial<SoundConfig>
   ): void {
     if (!this.isEnabled()) return;
 

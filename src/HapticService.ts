@@ -96,7 +96,7 @@ class HapticServiceClass {
    */
   private applyIntensity(
     pattern: number | number[],
-    intensity: HapticIntensity,
+    intensity: HapticIntensity
   ): number | number[] {
     const multiplier = INTENSITY_MULTIPLIERS[intensity];
 
@@ -118,7 +118,7 @@ class HapticServiceClass {
    */
   vibrate(
     pattern: HapticPattern,
-    intensity: HapticIntensity = 'medium',
+    intensity: HapticIntensity = 'medium'
   ): boolean {
     if (!this.isEnabled()) {
       return false;

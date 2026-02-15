@@ -202,7 +202,7 @@ class CelebrationServiceClass {
       const soundEnabled = localStorage.getItem(STORAGE_KEYS.soundEnabled);
       const hapticEnabled = localStorage.getItem(STORAGE_KEYS.hapticEnabled);
       const confettiEnabled = localStorage.getItem(
-        STORAGE_KEYS.confettiEnabled,
+        STORAGE_KEYS.confettiEnabled
       );
       const volume = localStorage.getItem(STORAGE_KEYS.volume);
 
@@ -232,19 +232,19 @@ class CelebrationServiceClass {
     try {
       localStorage.setItem(
         STORAGE_KEYS.soundEnabled,
-        SoundService.isEnabled().toString(),
+        SoundService.isEnabled().toString()
       );
       localStorage.setItem(
         STORAGE_KEYS.hapticEnabled,
-        HapticService.isEnabled().toString(),
+        HapticService.isEnabled().toString()
       );
       localStorage.setItem(
         STORAGE_KEYS.confettiEnabled,
-        ConfettiService.isEnabled().toString(),
+        ConfettiService.isEnabled().toString()
       );
       localStorage.setItem(
         STORAGE_KEYS.volume,
-        SoundService.getVolume().toString(),
+        SoundService.getVolume().toString()
       );
     } catch {
       // localStorage not available
@@ -443,7 +443,7 @@ class CelebrationServiceClass {
    * @param onPhaseChange - Optional callback for UI to sync with phases
    */
   celebrateRadiance(
-    onPhaseChange?: (phase: number, name: string) => void,
+    onPhaseChange?: (phase: number, name: string) => void
   ): void {
     // Gold/purple triumph colors for radiance
     const triumphColors = [

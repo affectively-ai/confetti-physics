@@ -54,7 +54,7 @@
   },
   "homepage": "https://github.com/affectively-ai/confetti-physics#readme",
   "dependencies": {
-    "@buley/hexgrid-3d": "^1.0.0",
+    "@buley/hexgrid-3d": "^3.2.4",
     "canvas-confetti": "^1.9.0"
   },
   "devDependencies": {

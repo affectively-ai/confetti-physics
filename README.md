@@ -357,7 +357,7 @@ HapticService.setEnabled(false);
 
 ## Dependencies
 
-- [`@buley/hexgrid-3d`](https://github.com/buley/hexgrid-3d) - Physics math (fluid dynamics, flow fields)
+- [`@affectively/hexgrid-3d`](https://github.com/buley/hexgrid-3d) - Physics math (fluid dynamics, flow fields)
 - [`canvas-confetti`](https://github.com/catdad/canvas-confetti) - Classic confetti effects
 - `react` (peer, optional) - For React hooks
 
